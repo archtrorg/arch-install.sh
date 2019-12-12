@@ -45,7 +45,7 @@ function partion {
 	read -r -p "Do you want to do partioning? [y/N] " resp
 	case "$resp" in
 		[yY][eE][sS]|[yY])
-			echo "gdisk will be used for partioning"
+			echo "cfdisk will be used for partioning"
 			read -r -p "which drive you want to partition (exapmle /dev/sda)? " drive
 			# Using gdisk for GPT, if you want to use MBR replace it with fdisk
 			gdisk $drive
@@ -237,12 +237,12 @@ function install-amd {
 	pacstrap /mnt mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
 	pacstrap /mnt libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 }
-function install-nvidia {
+function install-intel {
 	br
 	read -r -p "Do you want proprietary nvidia drivers? [y/N] " graphic
 	case "$graphic" in
 		[yY][eE][sS]|[yY])
-			pacstrap /mnt nvidia nvidia-settings nvidia-utils lib32-nvidia-utils
+			pacstrap /mnt xf86-video-intel libva-intel-driver intel-ucode
 			;;
 		*)
 			;;
@@ -253,14 +253,14 @@ function install-nvidia {
 function graphics {
 	br
 	echo -e "Choose Graphic card drivers to install: \n"
-	echo -e "1. AMD \n2. Nvidia \n3. None"
+	echo -e "1. AMD \n2. İntel \n3. None"
 	read -r -p "Drivers [1/2/3]: " drivere
 	case "$drivere" in
 		1)
 			install-amd
 			;;
 		2)
-			install-nvidia
+			install-intel
 			;;
 		*)
 			;;
