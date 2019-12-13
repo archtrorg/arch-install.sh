@@ -113,7 +113,7 @@ function base {
 				which \
 				base-devel \
 				networkmanager \
-				
+				sudo \
 				bash-completion \
 				git \
 				exfat-utils \
@@ -193,7 +193,7 @@ function archroot {
 	arch-chroot /mnt bash -c "echo $hname > /etc/hostname && echo 127.0.0.1	$hname > /etc/hosts && echo ::1	$hname >> /etc/hosts && echo 127.0.1.1	$hname.localdomain	$hname >> /etc/hosts && exit"
 
 	echo "Set Root password"
-	arch-chroot /mnt bash -c "passwd && useradd --create-home $uname && echo 'set user password' && passwd $uname && groupadd sudo && gpasswd -a $uname sudo && EDITOR=vim visudo && exit"
+	arch-chroot /mnt bash -c "passwd && useradd --create-home $uname && echo 'set user password' && passwd $uname && groupadd sudo && gpasswd -a $uname sudo && EDITOR=nano && exit"
 
 	echo -e "enabling services...\n"
 	arch-chroot /mnt bash -c "systemctl enable bluetooth && exit"
@@ -354,5 +354,6 @@ case "$starti" in
 	*)
 		main
 		;;
-esac
+esac			
+
 			
