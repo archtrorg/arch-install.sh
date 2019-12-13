@@ -5,7 +5,7 @@ A bash script to assist me in installation of Arch linux
 
 - Download the script
 
-`wget https://github.com/prmsrswt/arch-install.sh/raw/master/arch-install.sh`
+`wget https://github.com/archtrorg/arch-install.sh/raw/master/arch-install.sh`
 
 - Give executable permissions
 
