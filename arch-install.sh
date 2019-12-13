@@ -113,10 +113,9 @@ function base {
 				which \
 				base-devel \
 				networkmanager \
-				sudo \
+				
 				bash-completion \
 				git \
-				vim \
 				exfat-utils \
 				ntfs-3g \
 				grub \
@@ -356,3 +355,4 @@ case "$starti" in
 		main
 		;;
 esac
+			
